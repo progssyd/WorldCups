@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Categories>
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+
+<div class="modal" tabindex="-1" id="del">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">رسالة تأكيد</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>هل تريد بالتأكيد حذف هذا العنصر</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirmdel()">حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+  
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form  asp-action="CreateNewCatgeroies" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">اسم الفئة</label>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <label class="form-label">وصف الفئة</label>
+                                <input type="text" name="Description" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">  الأيقونة </label>
+                                <input type="text" name="Icon" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <label class="form-label">  الرابط </label>
+                                <input type="text" name="Url" class="form-control" />
+                            </div>
+                        </div>
+                    
+                      <div class="row mt-3">
+                          <div class="col text-center">
+                              <button type="submit" class="btn-hover color-1">حفظ</button>
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="Categories">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">
+                                    بحث - تصفية
+                                </label>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-success" type="submit">بحث</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                  
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">
+                                    بحث - متقدم
+                                </label>
+                            <input oninput="AdvanceSearch(this.value)" type="text" name="Name" class="form-control" />
+                            </div>
+                           
+                        </div>
+
+
+                   
+
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="categoreisContainer">
+        @Html.Partial("_Partiial/_CateogriesPartial", Model)
+    </div>
+ 
+</div>
